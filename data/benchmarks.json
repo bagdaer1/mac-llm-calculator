@@ -1,0 +1,83 @@
+{
+  "license": "CC BY 4.0, attribution: Macyou (https://macyou.co/benchmarks)",
+  "method": {
+    "harness": "Ollama REST API /api/generate, stream false",
+    "prompt_words": 300,
+    "num_predict": 512,
+    "temperature": 0.7,
+    "runs_per_model": 3,
+    "reported": "median of 3 recorded runs after 1 discarded warm up",
+    "date": "2026-07-13",
+    "ollama": "0.31.2",
+    "macos": "15.3.1 (Sequoia)",
+    "machine": "Mac mini M4, 16 GB unified memory, 120 GB/s, otherwise idle"
+  },
+  "runs": [
+    {
+      "model": "Llama 3.2 3B",
+      "params_b": 3.2,
+      "quant": "Q4_K_M",
+      "gen_tok_s": 46.7,
+      "prompt_tok_s": 1720,
+      "spread": 0.1
+    },
+    {
+      "model": "Mistral 7B",
+      "params_b": 7.2,
+      "quant": "Q4_K_M",
+      "gen_tok_s": 22.8,
+      "prompt_tok_s": 645,
+      "spread": 0.1
+    },
+    {
+      "model": "Qwen 2.5 7B",
+      "params_b": 7.6,
+      "quant": "Q4_K_M",
+      "gen_tok_s": 22.3,
+      "prompt_tok_s": 1130,
+      "spread": 0.1
+    },
+    {
+      "model": "Llama 3.1 8B",
+      "params_b": 8.0,
+      "quant": "Q4_K_M",
+      "gen_tok_s": 21.2,
+      "prompt_tok_s": 587,
+      "spread": 0.1
+    },
+    {
+      "model": "DeepSeek R1 8B",
+      "params_b": 8.0,
+      "quant": "Q4_K_M",
+      "gen_tok_s": 20.0,
+      "prompt_tok_s": 531,
+      "spread": 0.1
+    },
+    {
+      "model": "Qwen 2.5 14B",
+      "params_b": 14.8,
+      "quant": "Q4_K_M",
+      "gen_tok_s": 11.7,
+      "prompt_tok_s": 606,
+      "spread": 0.1
+    }
+  ],
+  "external_checks": [
+    {
+      "hardware": "M5 Ultra, 1200 GB/s",
+      "model": "Qwen 3.8 27B Q4",
+      "reported_tok_s": 50,
+      "predicted_tok_s": 53,
+      "source": "https://old.reddit.com/r/LocalLLaMA/comments/1wisr6h/first_m5_ultra_benchmarks/",
+      "note": "reported by u/bakawolf123 thread, omlx figures, no mtp"
+    },
+    {
+      "hardware": "M3 Ultra, 819 GB/s",
+      "model": "Qwen 3.8 27B Q8",
+      "reported_tok_s": "20 to 25",
+      "predicted_tok_s": 24,
+      "source": "https://old.reddit.com/r/LocalLLaMA/comments/1wisr6h/first_m5_ultra_benchmarks/",
+      "note": "reported by u/Hoodfu in the same thread"
+    }
+  ]
+}

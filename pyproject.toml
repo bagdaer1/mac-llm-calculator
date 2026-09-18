@@ -1,0 +1,31 @@
+[project]
+name = "mac-llm-calculator"
+version = "0.1.0"
+description = "Predict memory need and tokens per second for any LLM on any Apple Silicon chip, from one formula fitted to measured benchmarks"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Macyou", email = "support@macyou.co" }]
+keywords = ["llm", "apple-silicon", "mlx", "ollama", "llama-cpp", "benchmark", "mac"]
+classifiers = [
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://macyou.co/mac-llm-calculator"
+Benchmarks = "https://macyou.co/benchmarks"
+Source = "https://github.com/bagdaer1/mac-llm-calculator"
+
+[project.scripts]
+maccalc = "maccalc.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["maccalc"]
+include-package-data = true

@@ -1,0 +1,384 @@
+{
+  "note": "Apple Silicon memory bandwidth and RAM options from Apple published specs; accelerators from vendor pages. Each accelerator row carries its source URL.",
+  "apple_verified": "2026-09-11",
+  "accelerators_verified": "2026-09-13",
+  "apple_silicon": [
+    {
+      "id": "m1",
+      "name": "M1",
+      "generation": "M1",
+      "bandwidth_gbs": 68,
+      "ram_options_gb": [
+        8,
+        16
+      ],
+      "machines": "MacBook Air, 13-inch MacBook Pro, Mac mini, iMac (2020-2021)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m1-pro",
+      "name": "M1 Pro",
+      "generation": "M1",
+      "bandwidth_gbs": 200,
+      "ram_options_gb": [
+        16,
+        32
+      ],
+      "machines": "MacBook Pro 14/16-inch (2021)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m1-max",
+      "name": "M1 Max",
+      "generation": "M1",
+      "bandwidth_gbs": 400,
+      "ram_options_gb": [
+        32,
+        64
+      ],
+      "machines": "MacBook Pro 14/16-inch (2021), Mac Studio (2022)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m1-ultra",
+      "name": "M1 Ultra",
+      "generation": "M1",
+      "bandwidth_gbs": 800,
+      "ram_options_gb": [
+        64,
+        128
+      ],
+      "machines": "Mac Studio (2022)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m2",
+      "name": "M2",
+      "generation": "M2",
+      "bandwidth_gbs": 100,
+      "ram_options_gb": [
+        8,
+        16,
+        24
+      ],
+      "machines": "MacBook Air, 13-inch MacBook Pro, Mac mini (2022-2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m2-pro",
+      "name": "M2 Pro",
+      "generation": "M2",
+      "bandwidth_gbs": 200,
+      "ram_options_gb": [
+        16,
+        32
+      ],
+      "machines": "MacBook Pro 14/16-inch, Mac mini (2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m2-max",
+      "name": "M2 Max",
+      "generation": "M2",
+      "bandwidth_gbs": 400,
+      "ram_options_gb": [
+        32,
+        64,
+        96
+      ],
+      "machines": "MacBook Pro 14/16-inch, Mac Studio (2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m2-ultra",
+      "name": "M2 Ultra",
+      "generation": "M2",
+      "bandwidth_gbs": 800,
+      "ram_options_gb": [
+        64,
+        128,
+        192
+      ],
+      "machines": "Mac Studio, Mac Pro (2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m3",
+      "name": "M3",
+      "generation": "M3",
+      "bandwidth_gbs": 100,
+      "ram_options_gb": [
+        8,
+        16,
+        24
+      ],
+      "machines": "MacBook Air, 14-inch MacBook Pro, iMac (2023-2024)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m3-pro",
+      "name": "M3 Pro",
+      "generation": "M3",
+      "bandwidth_gbs": 150,
+      "ram_options_gb": [
+        18,
+        36
+      ],
+      "machines": "MacBook Pro 14/16-inch (2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m3-max-30",
+      "name": "M3 Max (30-core GPU)",
+      "generation": "M3",
+      "bandwidth_gbs": 300,
+      "ram_options_gb": [
+        36,
+        96
+      ],
+      "machines": "MacBook Pro 14/16-inch (2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m3-max-40",
+      "name": "M3 Max (40-core GPU)",
+      "generation": "M3",
+      "bandwidth_gbs": 400,
+      "ram_options_gb": [
+        48,
+        64,
+        128
+      ],
+      "machines": "MacBook Pro 14/16-inch (2023)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m3-ultra",
+      "name": "M3 Ultra",
+      "generation": "M3",
+      "bandwidth_gbs": 819,
+      "ram_options_gb": [
+        96,
+        256,
+        512
+      ],
+      "machines": "Mac Studio (2025)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m4",
+      "name": "M4",
+      "generation": "M4",
+      "bandwidth_gbs": 120,
+      "ram_options_gb": [
+        16,
+        24,
+        32
+      ],
+      "machines": "MacBook Air, 14-inch MacBook Pro, Mac mini, iMac (2024-2025)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m4-pro",
+      "name": "M4 Pro",
+      "generation": "M4",
+      "bandwidth_gbs": 273,
+      "ram_options_gb": [
+        24,
+        48,
+        64
+      ],
+      "machines": "MacBook Pro 14/16-inch, Mac mini (2024)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m4-max-32",
+      "name": "M4 Max (32-core GPU)",
+      "generation": "M4",
+      "bandwidth_gbs": 410,
+      "ram_options_gb": [
+        36,
+        96
+      ],
+      "machines": "MacBook Pro 14/16-inch (2024), Mac Studio (2025)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m4-max-40",
+      "name": "M4 Max (40-core GPU)",
+      "generation": "M4",
+      "bandwidth_gbs": 546,
+      "ram_options_gb": [
+        48,
+        64,
+        128
+      ],
+      "machines": "MacBook Pro 14/16-inch (2024), Mac Studio (2025)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m5",
+      "name": "M5",
+      "generation": "M5",
+      "bandwidth_gbs": 153,
+      "ram_options_gb": [
+        16,
+        24,
+        32
+      ],
+      "machines": "MacBook Air, 14-inch MacBook Pro (2025-2026)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m5-pro",
+      "name": "M5 Pro",
+      "generation": "M5",
+      "bandwidth_gbs": 307,
+      "ram_options_gb": [
+        24,
+        48,
+        64
+      ],
+      "machines": "MacBook Pro 14/16-inch, Mac mini (2026)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m5-max-base",
+      "name": "M5 Max (base)",
+      "generation": "M5",
+      "bandwidth_gbs": 460,
+      "ram_options_gb": [
+        36,
+        48,
+        64,
+        128
+      ],
+      "machines": "MacBook Pro 14/16-inch, Mac Studio (2026)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m5-max-full",
+      "name": "M5 Max (614 GB/s)",
+      "generation": "M5",
+      "bandwidth_gbs": 614,
+      "ram_options_gb": [
+        48,
+        64,
+        128
+      ],
+      "machines": "MacBook Pro 14/16-inch, Mac Studio (2026)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m5-ultra",
+      "name": "M5 Ultra",
+      "generation": "M5",
+      "bandwidth_gbs": 1200,
+      "ram_options_gb": [
+        96,
+        256,
+        512
+      ],
+      "machines": "Mac Studio (2026)",
+      "vendor": "Apple",
+      "class": "unified"
+    },
+    {
+      "id": "m6",
+      "name": "M6",
+      "generation": "M6",
+      "bandwidth_gbs": 153,
+      "ram_options_gb": [
+        16,
+        24,
+        32
+      ],
+      "machines": "Mac mini (2026)",
+      "vendor": "Apple",
+      "class": "unified"
+    }
+  ],
+  "accelerators": [
+    {
+      "id": "rtx-3090",
+      "name": "GeForce RTX 3090",
+      "vendor": "NVIDIA",
+      "class": "gpu",
+      "memory_gb": 24,
+      "bandwidth_gbs": 936,
+      "price_note": "used, $1,200 to $1,400 as of late 2025",
+      "source": "https://insiderllm.com/guides/gb10-boxes-compared/"
+    },
+    {
+      "id": "rtx-4090",
+      "name": "GeForce RTX 4090",
+      "vendor": "NVIDIA",
+      "class": "gpu",
+      "memory_gb": 24,
+      "bandwidth_gbs": 1008,
+      "price_note": "used, varies widely",
+      "source": "https://www.nvidia.com/en-us/geforce/graphics-cards/40-series/rtx-4090/"
+    },
+    {
+      "id": "rtx-5090",
+      "name": "GeForce RTX 5090",
+      "vendor": "NVIDIA",
+      "class": "gpu",
+      "memory_gb": 32,
+      "bandwidth_gbs": 1792,
+      "price_note": "retail, varies",
+      "source": "https://getdeploying.com/gpus/nvidia-rtx-pro-6000-vs-nvidia-rtx5090"
+    },
+    {
+      "id": "rtx-pro-6000",
+      "name": "RTX PRO 6000 Blackwell",
+      "vendor": "NVIDIA",
+      "class": "gpu",
+      "memory_gb": 96,
+      "bandwidth_gbs": 1597,
+      "price_note": "workstation class, quoted rather than listed",
+      "source": "https://getdeploying.com/gpus/nvidia-rtx-pro-6000-vs-nvidia-rtx5090"
+    },
+    {
+      "id": "dgx-spark",
+      "name": "NVIDIA DGX Spark (GB10)",
+      "vendor": "NVIDIA",
+      "class": "unified-box",
+      "memory_gb": 128,
+      "bandwidth_gbs": 273,
+      "price_note": "list price at launch",
+      "source": "https://www.theregister.com/on-prem/2025/12/25/tested-amds-strix-halo-vs-nvidias-dgx-spark/2098514"
+    },
+    {
+      "id": "strix-halo",
+      "name": "AMD Ryzen AI Max+ 395 (Strix Halo)",
+      "vendor": "AMD",
+      "class": "unified-box",
+      "memory_gb": 128,
+      "bandwidth_gbs": 256,
+      "price_note": "128 GB systems from a little over $2,000",
+      "source": "https://www.theregister.com/on-prem/2025/12/25/tested-amds-strix-halo-vs-nvidias-dgx-spark/2098514"
+    }
+  ]
+}
