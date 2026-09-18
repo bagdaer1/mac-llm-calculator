@@ -8,7 +8,7 @@ No dependencies, no network calls, no telemetry. The data files are the whole
 substance of this repo and they are readable on their own.
 
 ```bash
-pip install mac-llm-calculator
+pip install git+https://github.com/bagdaer1/mac-llm-calculator
 
 maccalc llama-3-3-70b m4-pro --ram 64
 # Llama 3.3 70B on M4 Pro with 64 GB: fits
