@@ -1,11 +1,8 @@
 """The model has to reproduce the runs it was fitted on."""
 
-import json
-from pathlib import Path
-
 from maccalc import data, fit_model, tokens_per_second, weights_gb
 
-BENCH = json.loads((Path(__file__).resolve().parent.parent / "data" / "benchmarks.json").read_text())
+BENCH = data.benchmarks()
 M4_BANDWIDTH = 120.0
 Q4_BPW = 4.85
 

@@ -41,7 +41,7 @@ seconds_per_token = read_gb / (bandwidth_gbs * 0.915) + 0.003885
 ```
 
 Both constants were fitted by least squares to the six runs in
-`data/benchmarks.json`, measured on a base M4 Mac mini through the Ollama API,
+`maccalc/data/benchmarks.json`, measured on a base M4 Mac mini through the Ollama API,
 median of three runs each.
 
 | Model | Weights | Predicted | Measured | Error |
@@ -62,7 +62,7 @@ people report.
 Two external checks landed after the fit, both from the same public thread on
 first M5 Ultra benchmarks: 50 tokens per second reported on a 27B at Q4
 against 53 predicted, and 20 to 25 reported on the same model at Q8 on an M3
-Ultra against 24 predicted. Sources are in `data/benchmarks.json`.
+Ultra against 24 predicted. Sources are in `maccalc/data/benchmarks.json`.
 
 ## What is wrong with it
 
@@ -86,12 +86,12 @@ Stated before someone else does.
 
 ## Data
 
-- `data/benchmarks.json` measured runs and the exact method, CC BY 4.0.
-- `data/chips.json` Apple Silicon M1 to M6 with rated bandwidth and memory
+- `maccalc/data/benchmarks.json` measured runs and the exact method, CC BY 4.0.
+- `maccalc/data/chips.json` Apple Silicon M1 to M6 with rated bandwidth and memory
   options, verified against Apple published specs on 2026-09-11, plus RTX
   3090, 4090, 5090, RTX PRO 6000, DGX Spark and Strix Halo with source links,
   verified 2026-09-13.
-- `data/models.json` parameter counts, KV cache allowances and quantisation
+- `maccalc/data/models.json` parameter counts, KV cache allowances and quantisation
   levels.
 
 Corrections are welcome, especially measured numbers on hardware we do not

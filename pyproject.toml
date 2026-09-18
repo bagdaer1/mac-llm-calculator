@@ -29,3 +29,6 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools]
 packages = ["maccalc"]
 include-package-data = true
+
+[tool.setuptools.package-data]
+maccalc = ["data/*.json", "data/LICENSE-DATA"]

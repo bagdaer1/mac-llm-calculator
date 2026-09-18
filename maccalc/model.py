@@ -5,7 +5,7 @@ how much memory the weights plus context need, and how many gigabytes
 the runtime reads per generated token.
 
 Speed model, fitted by least squares to six measured runs on a base M4
-(see data/benchmarks.json):
+(see maccalc/data/benchmarks.json):
 
     seconds_per_token = read_gb / (bandwidth_gbs * 0.915) + 0.003885
 
