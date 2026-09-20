@@ -4,10 +4,10 @@ Two numbers decide whether a model runs on a machine and how fast:
 how much memory the weights plus context need, and how many gigabytes
 the runtime reads per generated token.
 
-Speed model, fitted by least squares to six measured runs on a base M4
-(see maccalc/data/benchmarks.json):
+Speed model, fitted by least squares to eight measured runs across two
+machines, a base M4 and an M5 Pro (see maccalc/data/benchmarks.json):
 
-    seconds_per_token = read_gb / (bandwidth_gbs * 0.915) + 0.003885
+    seconds_per_token = read_gb / (bandwidth_gbs * 0.9075) + 0.00325
 
 The first term is the memory bus. The second is fixed per token overhead
 that does not scale with model size. A single term model overestimates
@@ -20,11 +20,20 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-BANDWIDTH_EFFICIENCY = 0.915
+BANDWIDTH_EFFICIENCY = 0.9075
 """Share of rated memory bandwidth reached during generation."""
 
-PER_TOKEN_OVERHEAD_S = 0.003885
+PER_TOKEN_OVERHEAD_S = 0.00325
 """Fixed cost per token, seconds. Fitted on Apple Silicon with Ollama."""
+
+MOE_READ_FACTOR = 1.3
+"""A mixture of experts model reads more than its active weights per token.
+
+Attention and the shared parts of the network are read for every token while
+only some experts are, so the bytes that cross the bus land between the active
+size and the total size. Measured at 1.3 times the active weight size on
+Qwen3 30B A3B and Qwen3 Coder 30B A3B. One architecture, two models: treat it
+as a correction with evidence behind it, not as a law."""
 
 RUNTIME_OVERHEAD = 1.15
 """Runtime allocates about 15% above the raw weight size."""
@@ -80,7 +89,7 @@ def fit_model(
     """Does this model fit on this machine, and how fast will it generate.
 
     For a mixture of experts model pass active_params_b: memory comes from
-    the total parameter count, speed from the active one.
+    the total parameter count, speed from the active one times MOE_READ_FACTOR.
     """
     w = weights_gb(params_b, bits_per_weight)
     c = context_gb(ctx_overhead_gb, ctx_tokens)
@@ -88,7 +97,11 @@ def fit_model(
     comfortable = required + os_reserve_gb
     fits = comfortable <= memory_gb
     tight = not fits and required <= memory_gb
-    read = weights_gb(active_params_b, bits_per_weight) if active_params_b else w
+    read = (
+        weights_gb(active_params_b, bits_per_weight) * MOE_READ_FACTOR
+        if active_params_b
+        else w
+    )
     speed = tokens_per_second(bandwidth_gbs, read) if (fits or tight) else None
     return Fit(
         weights_gb=round(w, 2),

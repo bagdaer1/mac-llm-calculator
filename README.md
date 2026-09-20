@@ -1,8 +1,8 @@
 # mac-llm-calculator
 
-Will this LLM run on this Mac, and how fast. One formula, fitted to measured
-benchmarks, applied to every Apple Silicon chip from M1 to M6 and to the
-NVIDIA and AMD hardware people compare them against.
+Will this LLM run on this Mac, and how fast. One formula, fitted to ten
+measured runs on two machines, applied to every Apple Silicon chip from M1 to
+M6 and to the NVIDIA and AMD hardware people compare them against.
 
 No dependencies, no network calls, no telemetry. The data files are the whole
 substance of this repo and they are readable on their own.
@@ -37,21 +37,45 @@ its own VRAM gets a 1 GB reserve instead.
 set by memory bandwidth, not by core count:
 
 ```
-seconds_per_token = read_gb / (bandwidth_gbs * 0.915) + 0.003885
+seconds_per_token = read_gb / (bandwidth_gbs * 0.9075) + 0.00325
 ```
 
-Both constants were fitted by least squares to the six runs in
-`maccalc/data/benchmarks.json`, measured on a base M4 Mac mini through the Ollama API,
+Both constants were fitted by least squares to the eight dense runs in
+`maccalc/data/benchmarks.json`, measured through the Ollama API on two machines,
 median of three runs each.
 
-| Model | Weights | Predicted | Measured | Error |
+**Base M4 Mac mini, 120 GB/s, idle:**
+
+| Model | Read per token | Predicted | Measured | Error |
 | --- | --- | --- | --- | --- |
-| Llama 3.2 3B | 1.94 GB | 46.4 | 46.7 | 0.7% |
-| Mistral 7B | 4.37 GB | 22.9 | 22.8 | 0.5% |
-| Qwen 2.5 7B | 4.61 GB | 21.8 | 22.3 | 2.2% |
-| Llama 3.1 8B | 4.85 GB | 20.8 | 21.2 | 1.8% |
-| DeepSeek R1 8B | 4.85 GB | 20.8 | 20.0 | 4.0% |
-| Qwen 2.5 14B | 8.97 GB | 11.7 | 11.7 | 0.2% |
+| Llama 3.2 3B | 1.94 GB | 47.5 | 46.7 | 1.7% |
+| Mistral 7B | 4.37 GB | 23.1 | 22.8 | 1.3% |
+| Qwen 2.5 7B | 4.61 GB | 21.9 | 22.3 | 1.8% |
+| Llama 3.1 8B | 4.85 GB | 20.9 | 21.2 | 1.4% |
+| DeepSeek R1 8B | 4.85 GB | 20.9 | 20 | 4.5% |
+| Qwen 2.5 14B | 8.97 GB | 11.7 | 11.7 | 0.0% |
+
+**M5 Pro, 307 GB/s, 48 GB, with a virtual machine and background agents running:**
+
+| Model | Read per token | Predicted | Measured | Error |
+| --- | --- | --- | --- | --- |
+| Qwen3 8B | 4.97 GB | 47.4 | 47.78 | 0.8% |
+| Qwen 2.5 14B | 8.97 GB | 28.2 | 29.42 | 4.1% |
+| Qwen3 30B A3B (MoE) | 2.6 GB | 79 | 78.51 | 0.6% |
+| Qwen3 Coder 30B A3B (MoE) | 2.6 GB | 79 | 79.96 | 1.2% |
+
+The M5 Pro runs matter more than the M4 ones. The constants were fitted on a
+single machine first, and the question that decides whether this is a model or
+a lookup table is whether it survives a machine it never saw. Two and a half
+times the bandwidth later, the dense predictions are within 4.1%.
+
+The mixture of experts rows are the correction the first version got wrong.
+Reading only the active weights predicts 91 tokens per second for Qwen3 30B
+A3B and the machine does 78. Attention and the shared parts of the network are
+read for every token while only some experts are, so the bytes that actually
+cross the bus are about 1.3 times the active weight size. That factor comes
+from one architecture and two models, so it is a correction with evidence
+behind it, not a law.
 
 The second term is the point of the model. Without it the same arithmetic
 claims an RTX 5090 generates over 300 tokens per second on an 8B model, which
@@ -78,9 +102,9 @@ Stated before someone else does.
   generation speed.
 - Everything is single stream. Batched serving behaves differently and the
   gap favours discrete GPUs.
-- Mixture of experts models take memory from the total parameter count and
-  speed from the active one, which is implemented, but the routing overhead
-  is ignored.
+- The mixture of experts read factor of 1.3 was measured on Qwen3 30B A3B
+  only. Architectures with a different share of dense layers will land
+  somewhere else, and a model with more shared experts will read more.
 - Quantisation sizes are nominal bits per weight. Real GGUF files differ by a
   few percent.
 
